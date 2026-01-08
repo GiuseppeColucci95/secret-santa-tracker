@@ -39,6 +39,22 @@ export default function Homepage() {
     return false;
   }
 
+  //! function to handle user form registration submit
+  function handleSubmit(e) {
+
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const user = {};
+    user.firstName = formData.get("firstName");
+    user.lastName = formData.get("lastName");
+    user.phone = formData.get("phone");
+    user.mail = formData.get("mail");
+
+
+
+  }
+
   //! useEffect function at start of the page
   useEffect(() => {
 
@@ -60,71 +76,75 @@ export default function Homepage() {
   //$ TEMPLATE
   return (
     <>
-      <h1 className="text-center my-4">SECRET SANTA TRACKER</h1>
+      <h1 className="text-center my-4 mx-5">SECRET SANTA TRACKER</h1>
 
+      <section className="d-flex flex-column align-items-center container">
 
-      <section className="d-flex flex-column align-items-center">
+        <h3 className="text-center my-3">Inserisci i tuoi dati qui sotto!</h3>
 
-        <h3 className="text-center mt-5 mb-3">Inserisci i tuoi dati qui sotto!</h3>
+        <form className="w-75 d-flex flex-column align-items-center" onSubmit={handleSubmit}>
 
-        <div className="mb-3 w-50">
-          <label for="firstName" className="form-label">First name</label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            name="firstName"
-            id="firstName"
-            aria-describedby="helpId"
-            placeholder="Your first name here..."
-          />
-        </div>
+          <div className="mb-3 w-100">
+            <label htmlFor="firstName" className="form-label">First name</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              name="firstName"
+              id="firstName"
+              aria-describedby="helpId"
+              placeholder="Your first name here..."
+            />
+          </div>
 
-        <div className="mb-3 w-50">
-          <label for="lastName" className="form-label">Last name</label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            name="lastName"
-            id="lastName"
-            aria-describedby="helpId"
-            placeholder="Your last name here..."
-          />
-        </div>
+          <div className="mb-3 w-100">
+            <label htmlFor="lastName" className="form-label">Last name</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              name="lastName"
+              id="lastName"
+              aria-describedby="helpId"
+              placeholder="Your last name here..."
+            />
+          </div>
 
-        <div className="mb-3 w-50">
-          <label for="phone" className="form-label">Phone number</label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            maxLength="10"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            name="phone"
-            id="phone"
-            aria-describedby="helpId"
-            placeholder="Your phone number here..."
-          />
-        </div>
+          <div className="mb-3 w-100">
+            <label htmlFor="phone" className="form-label">Phone number</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              maxLength="10"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              name="phone"
+              id="phone"
+              aria-describedby="helpId"
+              placeholder="Your phone number here..."
+            />
+          </div>
 
-        <div className="mb-3 w-50">
-          <label for="mail" className="form-label">E-mail</label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            name="mail"
-            id="mail"
-            aria-describedby="helpId"
-            placeholder="Your e-mail here..."
-          />
-        </div>
+          <div className="mb-3 w-100">
+            <label htmlFor="mail" className="form-label">E-mail</label>
+            <input
+              type="email"
+              required
+              className="form-control"
+              name="mail"
+              id="mail"
+              aria-describedby="helpId"
+              placeholder="Your e-mail here..."
+            />
+          </div>
 
-        <button className="btn btn-success mt-2" type="submit">
-          Continue
-        </button>
+          <button className="btn btn-success mt-2" type="submit">
+            Continue
+          </button>
+
+        </form>
+
       </section>
       {/* USER NOT EXISTING SECTION */}
     </>
