@@ -12,7 +12,7 @@ export default function Homepage() {
     const user = localStorage.getItem("user");
 
     if (user != null) {
-      return user;
+      return JSON.parse(user);
     }
     return false;
   }
@@ -39,7 +39,7 @@ export default function Homepage() {
     return false;
   }
 
-  //! function to handle user form registration submit
+  //! function to handle user registration submit form
   function handleSubmit(e) {
 
     e.preventDefault();
@@ -51,15 +51,16 @@ export default function Homepage() {
     user.phone = formData.get("phone");
     user.mail = formData.get("mail");
 
-
+    localStorage.setItem("user", JSON.stringify(user));
 
   }
 
-  //! useEffect function at start of the page
+  //! useEffect function at page start
   useEffect(() => {
 
     if (doesUserExists()) {
       console.log("user exist");
+      console.log(doesUserExists());
       setUser(doesUserExists());
 
       if (isListPublished()) {
@@ -68,6 +69,12 @@ export default function Homepage() {
       else {
         console.log("list not published yet");
 
+        if (doesListExists()) {
+          console.log("list exist");
+        }
+        else {
+          console.log("list does not exist");
+        }
       }
     }
 
